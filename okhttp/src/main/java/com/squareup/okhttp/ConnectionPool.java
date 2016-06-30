@@ -87,7 +87,7 @@ public final class ConnectionPool {
       new LinkedBlockingQueue<Runnable>(), Util.threadFactory("OkHttp ConnectionPool", true));
 
   /** The maximum number of idle connections for each address. */
-  private int maxIdleConnections;
+  private final int maxIdleConnections;
   private final long keepAliveDurationNs;
   private Runnable cleanupRunnable = new Runnable() {
     @Override public void run() {
@@ -327,13 +327,10 @@ public final class ConnectionPool {
   /** Close all idle connections */
   public synchronized void closeIdleConnections()
   {
-    int oldMaxIdleConections = maxIdleConnections;
-    maxIdleConnections = 0;
     try {
-      connectionsCleanupRunnable.run();
+      cleanupRunnable.run();
     } catch (Exception err) {
-      Platform.get().logW("Unable to closeIdleConnections(): " + err);
+      Internal.logger.warning("Unable to closeIdleConnections(): " + err);
     }
-    maxIdleConnections = oldMaxIdleConections;
   }
 }
