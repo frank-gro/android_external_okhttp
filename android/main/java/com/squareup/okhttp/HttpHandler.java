@@ -81,7 +81,7 @@ public class HttpHandler extends URLStreamHandler {
         // Do not permit http -> https and https -> http redirects.
         client.setFollowSslRedirects(false);
 
-        if (NetworkSecurityPolicy.getInstance().isCleartextTrafficPermitted()) {
+        if (NetworkSecurityPolicy.isCleartextTrafficPermitted()) {
           // Permit cleartext traffic only (this is a handler for HTTP, not for HTTPS).
           client.setConnectionSpecs(CLEARTEXT_ONLY);
         } else {
