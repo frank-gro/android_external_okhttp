@@ -46,7 +46,7 @@ LOCAL_MODULE := okhttp
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := $(okhttp_system_src_files)
 LOCAL_JARJAR_RULES := $(LOCAL_PATH)/jarjar-rules.txt
-LOCAL_JAVA_LIBRARIES := core-libart conscrypt
+LOCAL_JAVA_LIBRARIES := core-libart
 LOCAL_STATIC_JAVA_LIBRARIES := tcmiface
 LOCAL_NO_STANDARD_LIBRARIES := true
 LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
@@ -58,7 +58,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := okhttp-nojarjar
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := $(okhttp_system_src_files)
-LOCAL_JAVA_LIBRARIES := core-libart conscrypt
+LOCAL_JAVA_LIBRARIES := core-libart
 LOCAL_STATIC_JAVA_LIBRARIES := tcmiface
 LOCAL_NO_STANDARD_LIBRARIES := true
 LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
